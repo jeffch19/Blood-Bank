@@ -1,11 +1,17 @@
-import { Button, Space} from 'antd';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
-    <div>
-      <h1>VitalFlow - BloodBank</h1>
-      <Button type="primary">Primary Button</Button>
-    </div>
+    <BrowserRouter>
+    <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/login" element={<Login />} />
+    <Route path="/register" element={<Register />} />
+    </Routes>
+    </BrowserRouter>
   );
 }
 
