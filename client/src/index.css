@@ -15,3 +15,23 @@ button {
   box-shadow: none !important;
   height: 40px !important;
 }
+
+input {
+  height: 40px !important;
+  border: 1px solid #6a6a6a !important;
+  border-radius: 2px !important;
+}
+
+input:focus{
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.ant-form-item {
+  margin-bottom: 0;
+}
+
+a:hover {
+  text-decoration: underline !important;
+  color: #6a6a6a;
+}
