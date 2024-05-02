@@ -1,14 +1,27 @@
 import React from 'react'
-import { Button, Form, Input, Radio } from 'antd';
+import { Button, Form, Input, Radio, message } from 'antd';
 import { Link, NavLink } from "react-router-dom";
 import OrgHospitalForm from './OrgHospitalForm';
+import { RegisterUser } from '../../apicalls/users';
 
 
 function Register() {
   const [type, setType] = React.useState('donar')
 
-  const onFinish = (values) => {
-    console.log(values);
+  const onFinish = async (values) => {
+    try {
+      const response = await RegisterUser({
+        ...values,
+        userType: type,
+    });
+      if(response.success) {
+        message.success(response.message);
+      } else {
+        throw new Error(response.message);
+      }
+    } catch (error) {
+      message.error(error.message)
+    }
   }
 
 

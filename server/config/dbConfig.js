@@ -12,6 +12,6 @@ connection.on('connected' , () => {
 
 // verify connection error
 
-connection.on('error' , () => {
+connection.on('error' , (err) => {
   console.log('Mongo DB Connection Error', err)
 })
