@@ -32,7 +32,7 @@ const userSchema = new mongoose.Schema({
 
   // is required if userType is an organization
   organizationName: {
-    type: String, 
+    type: String,
     required: function () {
       if (this.userType == "organization") {
         return true;
@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
 
   // is required if userType is organization or hospital
   website: {
-    type: String, 
+    type: String,
     required: function () {
       if (this.userType == "organization" || this.userType == "hospital") {
         return true;
@@ -61,7 +61,7 @@ const userSchema = new mongoose.Schema({
       return false;
     },
   },
- // common for all
+  // common for all
   email: {
     type: String,
     required: true,
@@ -77,7 +77,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
-});
+ },
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model("users", userSchema);

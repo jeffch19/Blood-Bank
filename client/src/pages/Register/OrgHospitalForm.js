@@ -21,16 +21,16 @@ function OrgHospitalForm({ type }) {
         <Input />
       </Form.Item>
       <Form.Item name='website' label='Website'>
-          <Input />
-        </Form.Item>
+        <Input />
+      </Form.Item>
       <Form.Item name='password' label='Password'>
-          <Input />
-          </Form.Item>
-          <Form.Item name='address' label='Address'
-          className='col-span-2'>
-          <TextArea />
-        </Form.Item>
-        
+        <Input type="password" />
+      </Form.Item>
+      <Form.Item name='address' label='Address'
+        className='col-span-2'>
+        <TextArea />
+      </Form.Item>
+
     </>
   )
 }
