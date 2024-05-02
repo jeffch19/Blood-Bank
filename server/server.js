@@ -6,3 +6,4 @@ const dbConfig = require('./config/dbConfig');
 
 app.listen(port, () => console.log(`Node JS Server Started at ${port}`));
 
+ 
