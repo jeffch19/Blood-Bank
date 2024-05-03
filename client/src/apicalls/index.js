@@ -8,7 +8,14 @@ export const axiosInstance = async (
       method,
       url: endpoint,
       data: payload,
-    });
+    },
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      }
+
+    );
     return response.data;
   } catch (error) {
     return error
