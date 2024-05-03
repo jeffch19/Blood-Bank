@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Form, Input, Radio, message } from 'antd';
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
 import { LoginUser } from '../../apicalls/users';
 
 
@@ -22,6 +22,12 @@ function Login() {
       message.error(error.message)
     }
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      Navigate("/")
+    }
+  }, []);
 
 
   return (

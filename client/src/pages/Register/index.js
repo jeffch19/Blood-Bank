@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Button, Form, Input, Radio, message } from 'antd';
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Navigate } from "react-router-dom";
 import OrgHospitalForm from './OrgHospitalForm';
 import { RegisterUser } from '../../apicalls/users';
 
@@ -23,6 +23,12 @@ function Register() {
       message.error(error.message)
     }
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("token")) {
+      Navigate("/")
+    }
+  }, []);
 
 
   return (

@@ -2,6 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
+const authMiddleware = require('../middleware/authMiddleware');
 
 //register new user
 router.post('/register', async (req, res) => {
@@ -88,5 +89,22 @@ router.post("/login", async (req, res) => {
     });
   }
 });
+
+//get current user
+router.get("/get-current-user", authMiddleware,  async (req, res) => {
+  try {
+    const user = await User.findOne({ _id: req.body.userId });
+    return res.send ({
+      success: true,
+      message: "User Fetched Successfully",
+      data: user,
+    })
+  } catch (error) {
+    return res.send({
+      success: false,
+      message: error.message,
+    });
+  }
+})
 
 module.exports = router;
