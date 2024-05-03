@@ -1,26 +1,37 @@
 import React, { useEffect } from 'react'
 import { Button, Form, Input, Radio, message } from 'antd';
-import { Link, NavLink, Navigate } from "react-router-dom";
+import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
 import OrgHospitalForm from './OrgHospitalForm';
 import { RegisterUser } from '../../apicalls/users';
+import { useDispatch } from 'react-redux';
+import { SetLoading } from '../../redux/loadersSlice';
+import { getAntdInputValidation } from '../../utils/helpers';
 
 
 function Register() {
-  const [type, setType] = React.useState('donar')
+  const [type, setType] = React.useState('donar');
+  const Navigate = useNavigate();
+  const dispatch = useDispatch();
+
+
 
   const onFinish = async (values) => {
+    dispatch(SetLoading(true));
     try {
       const response = await RegisterUser({
         ...values,
         userType: type,
     });
+    dispatch(SetLoading(false));
       if(response.success) {
         message.success(response.message);
+        Navigate("/login");
       } else {
         throw new Error(response.message);
       }
     } catch (error) {
-      message.error(error.message)
+      dispatch(SetLoading(false));
+      message.error(error.message);
     }
   }
 
@@ -55,16 +66,16 @@ function Register() {
         {type === "donar" && (
           <>
             {" "}
-            <Form.Item label="Name" name='name'>
+            <Form.Item label="Name" name='name' rules={getAntdInputValidation()}>
               <Input />
             </Form.Item>
-            <Form.Item label="Email" name='email'>
+            <Form.Item label="Email" name='email' rules={getAntdInputValidation()}>
               <Input />
             </Form.Item>
-            <Form.Item label="Phone" name='phone'>
+            <Form.Item label="Phone" name='phone' rules={getAntdInputValidation()}>
               <Input />
             </Form.Item>
-            <Form.Item label="Password" name='password'>
+            <Form.Item label="Password" name='password' rules={getAntdInputValidation()}>
               <Input type='password' />
             </Form.Item>
           </>

@@ -2,24 +2,31 @@ import React, { useEffect } from 'react'
 import { Button, Form, Input, Radio, message } from 'antd';
 import { Link, NavLink, Navigate, useNavigate } from "react-router-dom";
 import { LoginUser } from '../../apicalls/users';
+import { useDispatch } from 'react-redux';
+import { SetLoading } from '../../redux/loadersSlice';
+import { getAntdInputValidation } from '../../utils/helpers';
 
 
 
 function Login() {
-  const [type, setType] = React.useState('donar')
-  const navigate = useNavigate()
+  const [type, setType] = React.useState('donar');
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const onFinish = async (values) => {
     try {
+      dispatch(SetLoading(true));
       const response = await LoginUser(values);
+      dispatch(SetLoading(false));
       if (response.success) {
-        message.success (response.message);
+        message.success(response.message);
         localStorage.setItem("token", response.data);
         navigate("/")
       } else {
         throw new Error(response.message);
       }
     } catch (error) {
-      message.error(error.message)
+      dispatch(SetLoading(false));
+      message.error(error.message);
     }
   }
 
@@ -53,12 +60,12 @@ function Login() {
 
 
 
-            <Form.Item label="Email" name='email'>
-              <Input />
-            </Form.Item>
-            <Form.Item label="Password" name='password'>
-              <Input type='password' />
-            </Form.Item>
+        <Form.Item label="Email" name='email' rules={getAntdInputValidation()}>
+          <Input />
+        </Form.Item>
+        <Form.Item label="Password" name='password' rules={getAntdInputValidation()}>
+          <Input type='password' />
+        </Form.Item>
 
 
         <Button type="primary" block className='' htmlType='submit'>

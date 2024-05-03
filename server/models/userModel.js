@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-  //common for all
-  userType: {
+ //common for all
+ userType: {
     type: String,
     required: true,
     enum: ['donar', 'organization', 'hospital', 'admin'],
-  },
+ },
 
-  // is required if userType is donar or admin
-  name: {
+ // is required if userType is donar or admin
+ name: {
     type: String,
     required: function () {
       if (this.userType == 'admin' || this.userType == 'donar') {
@@ -17,10 +17,10 @@ const userSchema = new mongoose.Schema({
       }
       return false;
     }
-  },
+ },
 
-  // is required if userType is hospitalName
-  hospitalName: {
+ // is required if userType is hospitalName
+ hospitalName: {
     type: String,
     required: function () {
       if (this.userType == "hospital") {
@@ -28,10 +28,10 @@ const userSchema = new mongoose.Schema({
       }
       return false;
     },
-  },
+ },
 
-  // is required if userType is an organization
-  organizationName: {
+ // is required if userType is an organization
+ organizationName: {
     type: String,
     required: function () {
       if (this.userType == "organization") {
@@ -39,10 +39,10 @@ const userSchema = new mongoose.Schema({
       }
       return false;
     },
-  },
+ },
 
-  // is required if userType is organization or hospital
-  website: {
+ // is required if userType is organization or hospital
+ website: {
     type: String,
     required: function () {
       if (this.userType == "organization" || this.userType == "hospital") {
@@ -50,9 +50,9 @@ const userSchema = new mongoose.Schema({
       }
       return false;
     },
-  },
+ },
 
-  address: {
+ address: {
     type: String,
     required: function () {
       if (this.userType == "organization" || this.userType == "hospital") {
@@ -60,27 +60,25 @@ const userSchema = new mongoose.Schema({
       }
       return false;
     },
-  },
-  // common for all
-  email: {
+ },
+ // common for all
+ email: {
     type: String,
     required: true,
     unique: true,
-  },
-
-  password: {
-    type: String,
-    required: true,
-  },
-
-  phone: {
-    type: String,
-    required: true,
-  },
  },
-  {
-    timestamps: true,
-  }
-);
+
+ password: {
+    type: String,
+    required: true,
+ },
+
+ phone: {
+    type: String,
+    required: true,
+ },
+}, {
+ timestamps: true,
+});
 
 module.exports = mongoose.model("users", userSchema);
