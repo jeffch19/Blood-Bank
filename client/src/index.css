@@ -16,10 +16,11 @@ button {
   height: 40px !important;
 }
 
-input, textarea {
+input, textarea, select {
   min-height: 40px !important;
   border: 1px solid #6a6a6a !important;
   border-radius: 2px !important;
+  width: 100% !important;
 }
 
 input:focus, textarea:focus{
@@ -38,4 +39,8 @@ a:hover {
 
 i{
   font-size: 18px;
+}
+
+.ant-form-item-label {
+  padding: 0 !important;
 }
