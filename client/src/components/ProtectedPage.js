@@ -51,7 +51,9 @@ function ProtectedPage({ children }) {
           <div className='flex items-center gap-1'>
             <i class="ri-shield-user-line"></i>
             <div className='flex flex-col'>
-              <span className='mr-5 text-md cursor-pointer'>{getLoggedInUserName(currentUser).toUpperCase()}</span>
+              <span className='mr-5 text-md cursor-pointer'
+              onClick={() => navigate("/profile")}
+              >{getLoggedInUserName(currentUser).toUpperCase()}</span>
             </div>
 
             <i className="ri-logout-box-line ml-5 cursor-pointer"
@@ -64,7 +66,7 @@ function ProtectedPage({ children }) {
         </div>
 
         {/* body */}
-        <div className='p-5'>{children}</div>
+        <div className='px-5 py-2'>{children}</div>
       </div>
     )
   );
