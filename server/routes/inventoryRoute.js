@@ -6,9 +6,9 @@ const authMiddleware = require('../middleware/authMiddleware');
 //add inventory
 router.post('/add', authMiddleware, async (req, res) => {
   try {
-    
+
     // validate email and inventoryType
-    const user = await User.findOne({ email: req.body.email});
+    const user = await User.findOne({ email: req.body.email });
     if (!user) throw new Error("Invalid Email");
 
     if (req.body.inventoryType === "in" && user.userType !== 'donar') {
@@ -29,12 +29,23 @@ router.post('/add', authMiddleware, async (req, res) => {
     const inventory = new Inventory(req.body);
     await inventory.save();
 
-    return res.send({ success: true, message: "Inventory Added Successfully"});
+    return res.send({ success: true, message: "Inventory Added Successfully" });
 
   } catch (error) {
-    return res.send({ success: false, message: error.message});
+    return res.send({ success: false, message: error.message });
   }
 
+});
+
+// get inventory
+
+router.get("/get", authMiddleware, async (req, res) => {
+  try {
+    const inventory = await Inventory.find({ organization: req.body.userId }).populate("donar").populate("hospital");
+    return res.send({ success: true, data: inventory });
+  } catch (error) {
+    return res.send({ success: false, message: error.message });
+  }
 });
 
 module.exports = router;
