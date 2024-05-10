@@ -26,10 +26,24 @@ function Profile() {
 
         {currentUser.userType === "donar" &&
           <>
-            <Tabs.TabPane tab="Donations" key="1"></Tabs.TabPane>
+            <Tabs.TabPane tab="Donations" key="4"></Tabs.TabPane>
 
-            <Tabs.TabPane tab="Organizations" key="2"> 
+            <Tabs.TabPane tab="Organizations" key="5"> 
             <Organizations />
+            </Tabs.TabPane>
+          </>
+        }
+
+
+
+
+
+        {currentUser.userType === "hospital" &&
+          <>
+            <Tabs.TabPane tab="Consumptions" key="6"></Tabs.TabPane>
+
+            <Tabs.TabPane tab="Organizations" key="7"> 
+            <Organizations userType="hospital" />
             </Tabs.TabPane>
           </>
         }

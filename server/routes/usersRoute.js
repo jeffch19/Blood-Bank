@@ -152,12 +152,12 @@ router.get("/get-all-hospitals", authMiddleware, async (req, res) => {
     //get all unique hospital ids from inventory
     const organization = new mongoose.Types.ObjectId(req.body.userId);
     const uniqueHospitalIds = await Inventory.distinct("hospital", {
-      organization, 
+      organization,
     });
 
     const hospitals = await User.find({
-      _id: {$in: uniqueHospitalIds},
-    
+      _id: { $in: uniqueHospitalIds },
+
     });
 
     return res.send({
@@ -179,12 +179,41 @@ router.get("/get-all-organizations-of-a-donar", authMiddleware, async (req, res)
     //get all unique hospital ids from inventory
     const donar = new mongoose.Types.ObjectId(req.body.userId);
     const uniqueOrganizationIds = await Inventory.distinct("organization", {
-      donar, 
+      donar,
     });
 
     const hospitals = await User.find({
-      _id: {$in: uniqueOrganizationIds},
-    
+      _id: { $in: uniqueOrganizationIds },
+
+    });
+
+    return res.send({
+      success: true,
+      message: "Hospitals fetched successfully",
+      data: hospitals,
+    });
+  } catch (error) {
+    return res.send({
+      success: false,
+      message: error.message,
+    });
+  }
+});
+
+
+
+//get all unique organizations for a hospital
+router.get("/get-all-organizations-of-a-hospital", authMiddleware, async (req, res) => {
+  try {
+    //get all unique organization ids from inventory
+    const hospital = new mongoose.Types.ObjectId(req.body.userId);
+    const uniqueOrganizationIds = await Inventory.distinct("organization", {
+      hospital,
+    });
+
+    const hospitals = await User.find({
+      _id: { $in: uniqueOrganizationIds },
+
     });
 
     return res.send({

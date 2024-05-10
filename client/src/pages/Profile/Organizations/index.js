@@ -1,11 +1,11 @@
 import React from "react";
-import { GetAllOrganizationsOfADonar } from "../../../apicalls/users";
+import { GetAllOrganizationsOfADonar, GetAllOrganizationsOfAHospital } from "../../../apicalls/users";
 import { SetLoading } from "../../../redux/loadersSlice";
 import { Table, message } from "antd";
 import { useDispatch } from "react-redux";
 import { getDateFormat } from "../../../utils/helpers";
 
-function Organizations() {
+function Organizations(userType) {
 
   const dispatch = useDispatch();
   const [data, setData] = React.useState([]);
@@ -13,7 +13,13 @@ function Organizations() {
   const getData = async () => {
     try {
       dispatch(SetLoading(true));
-      const response = await GetAllOrganizationsOfADonar();
+      let response = null
+      if (userType === "hospital") {
+        response = await GetAllOrganizationsOfAHospital();
+
+      } else {
+        response = await GetAllOrganizationsOfADonar();
+      }
       dispatch(SetLoading(false));
       if (response.success) {
         setData(response.data);
@@ -46,7 +52,7 @@ function Organizations() {
     {
       title: "Created At",
       dataIndex: "createdAt",
-      render : (text) => getDateFormat(text)
+      render: (text) => getDateFormat(text)
     }
   ];
 
