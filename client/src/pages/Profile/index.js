@@ -25,7 +25,7 @@ function Profile() {
           </>
         )}
 
-        {currentUser.userType === "donar" &&
+        {currentUser.userType === "donar" && (
           <>
             <Tabs.TabPane tab="Donations" key="4">
             <InventoryTable 
@@ -39,16 +39,16 @@ function Profile() {
             
 
             <Tabs.TabPane tab="Organizations" key="5"> 
-            <Organizations />
+            <Organizations userType= "donar" />
             </Tabs.TabPane>
           </>
-        }
+        )}
 
 
 
 
 
-        {currentUser.userType === "hospital" &&
+        {currentUser.userType === "hospital" && (
           <>
             <Tabs.TabPane tab="Consumptions" key="6">
               <InventoryTable 
@@ -64,7 +64,7 @@ function Profile() {
             <Organizations userType="hospital" />
             </Tabs.TabPane>
           </>
-        }
+        )}
       </Tabs>
     </div>
   )

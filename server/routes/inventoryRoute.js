@@ -103,7 +103,7 @@ router.get("/get", authMiddleware, async (req, res) => {
 
 router.post("/filter", authMiddleware, async (req, res) => {
   try {
-    console.log(req.body.filters);
+    
     const inventory = await Inventory.find(
       req.body.filters
     ).sort({createdAt: -1})

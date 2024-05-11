@@ -1,12 +1,17 @@
 import React from "react";
 import { GetAllOrganizationsOfADonar, GetAllOrganizationsOfAHospital } from "../../../apicalls/users";
 import { SetLoading } from "../../../redux/loadersSlice";
-import { Table, message } from "antd";
-import { useDispatch } from "react-redux";
+import { Modal, Table, message } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 import { getDateFormat } from "../../../utils/helpers";
+import InventoryTable from "../../../components/InventoryTable";
 
-function Organizations(userType) {
 
+function Organizations({userType}) {
+
+  const [showHistoryModal, setShowHistoryModal] = React.useState(false);
+  const { currentUser } = useSelector((state) => state.users); 
+  const [selectedOrganization, setSelectedOrganization] = React.useState(null);
   const dispatch = useDispatch();
   const [data, setData] = React.useState([]);
 
@@ -53,7 +58,22 @@ function Organizations(userType) {
       title: "Created At",
       dataIndex: "createdAt",
       render: (text) => getDateFormat(text)
-    }
+    },
+    {
+      title: "Action",
+      dataIndex: "action",
+      render: (text, record) => (
+        <span className="underline text-md cursor-pointer"
+          onClick={() => {
+            
+            setSelectedOrganization(record);
+            setShowHistoryModal(true);
+          }}
+        >
+          History
+        </span>
+      )
+    },
   ];
 
   React.useEffect(() => {
@@ -65,8 +85,33 @@ function Organizations(userType) {
   return (
     <div>
       <Table columns={columns} dataSource={data} />
+
+      {showHistoryModal && (
+         <Modal title={
+          
+          `${
+            userType ==='donar' 
+            ? 'Donations History' 
+            : 'Consumption History'
+          } In ${selectedOrganization.organizationName}`
+          
+        }
+      centered
+      open={showHistoryModal}
+      onClose={() => setShowHistoryModal(false)}
+      width={1000}
+      onCancel={() => setShowHistoryModal(false)}
+      >
+        <InventoryTable 
+        filters = {{ 
+          organization: selectedOrganization._id , 
+          [userType] : currentUser._id,
+          }} 
+          />
+      </Modal>
+      )}
     </div>
-  )
+  );
 }
 
 
