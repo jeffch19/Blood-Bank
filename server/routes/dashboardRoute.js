@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 router.get('/blood-groups-data', authMiddleware, async (req, res) => {
   try {
     const allBloodGroups = ["a+", "a-", "b+", "b-", "ab+", "ab-", "o+", "o-"];
-    const organization = new mongoose.Types.ObjectId(req.user.userId);
+    const organization = new mongoose.Types.ObjectId(req.body.userId);
     const bloodGroupsData = [];
 
     await Promise.all(
