@@ -41,7 +41,7 @@ function ProtectedPage({ children }) {
     currentUser && (
       <div>
         {/* header */}
-        <div className='flex justify-between items-center bg-primary text-white px-5 py3'>
+        <div className='flex justify-between items-center bg-primary text-white px-5 py3 mx-5 rounded-b'>
           <div 
           onClick={() => navigate("/")}
           className='cursor-pointer'
@@ -69,7 +69,7 @@ function ProtectedPage({ children }) {
         </div>
 
         {/* body */}
-        <div className='px-5 py-2'>{children}</div>
+        <div className='px-5 py-5'>{children}</div>
       </div>
     )
   );

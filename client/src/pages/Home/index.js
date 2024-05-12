@@ -4,6 +4,7 @@ import { SetLoading } from '../../redux/loadersSlice';
 import { GetAllBloodGroupsInInventory } from '../../apicalls/dashboard';
 import { message } from 'antd';
 import { getLoggedInUserName } from '../../utils/helpers';
+import InventoryTable from '../../components/InventoryTable';
 
 function Home() {
   const { currentUser } = useSelector((state) => state.users);
@@ -32,15 +33,15 @@ function Home() {
   }, []);
 
   const colors = [
-    "#CE5959", "#1A5F7A", "#B8621B", "#245953", "#2C3333", "#804674", "#A84448", "#635985",
+    "#2B3467", "#1A5F7A", "#B8621B", "#245953", "#2C3333", "#804674", "#A84448", "#635985",
   ]
   return (
     <div>
-      <span className='text-primary text-2xl'>
+      <span className='text-gray-700 text-2xl font-semibold'>
         Welcome {getLoggedInUserName(currentUser)}
       </span>
 
-      <div className='grid grid-cols-4 gap-5 mt-5'>
+      <div className='grid grid-cols-4 gap-5 mb-5 mt-2'>
         {bloodGroupsData.map((bloodGroup, index) => {
           const color = colors[index];
           return <div className={`p-5 flex justify-between text-white rounded items-center`}
@@ -66,6 +67,19 @@ function Home() {
           </div>
         })}
       </div>
+
+
+        <span className='text-xl text-gray-700 font-semibold'>
+          Your Recent Inventory
+
+        </span>
+      <InventoryTable 
+      filters={{
+        organization: currentUser._id,
+      }}
+      limit={5}
+      userType={currentUser.userType}
+      />
     </div>
   )
 }

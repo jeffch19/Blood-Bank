@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { GetInventoryWithFilters } from "../apicalls/inventory";
 import { getDateFormat } from "../utils/helpers";
 
-function InventoryTable({filters, userType}) {
+function InventoryTable({filters, userType , limit}) {
   const[data, setData] = React.useState([]);
   const [open, setOpen] = React.useState(false); 
   const dispatch = useDispatch();
@@ -40,7 +40,7 @@ function InventoryTable({filters, userType}) {
   const getData = async () => {
     try {
       dispatch(SetLoading(true));
-      const response = await GetInventoryWithFilters(filters);
+      const response = await GetInventoryWithFilters(filters , limit);
       dispatch(SetLoading(false));
       if (response.success) {
         setData(response.data);
