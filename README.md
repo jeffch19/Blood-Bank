@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# VitalFlow BloodBank
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The Blood Bank Management System is a comprehensive application designed to streamline the management of blood donation-related activities. It allows users to manage inventory, users, and organizations involved in blood donation, making it easier to track and organize blood donations and inventory.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Inventory Management:** Users can view and manage the inventory of blood groups, including total in, total out, and available quantities.
+- **User Management:** The system allows for the management of users, including organizations, donors, and hospitals.
+- **Organization Dashboard:** Organizations can view their recent inventory and manage their blood group inventory.
+- **Donor Dashboard:** Donors can view their recent donations.
+- **Hospital Dashboard:** Hospitals can view their recent requests and consumptions.
 
-### `npm start`
+## Technologies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend:** React (bootstrapped with Create React App), Redux for state management, and Tailwind CSS for styling.
+- **Backend:** Node.js with Express.js for handling server routes and MongoDB for database storage.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js installed on your machine.
+- MongoDB database running.
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository to your local machine.
+2. Navigate to the project directory.
+3. Install the frontend dependencies by running `npm install` in the `client` directory.
+4. Install the backend dependencies by running `npm install` in the `server` directory.
+5. Set up environment variables as needed, particularly for database connections and JWT secret.
+6. Start the MongoDB database.
+7. Start the backend server by running `npm run start` in the `server` directory.
+8. Start the frontend application by running `npm start` in the `client` directory.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Usage
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Frontend:** Access the application by navigating to `http://localhost:3000` in your web browser.
+- **Backend:** The backend server runs on `http://localhost:5001`.
 
-### `npm run eject`
+## Contributing
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Contributions to the Blood Bank Management System are welcome. Please feel free to submit a pull request or open an issue if you encounter any problems.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
