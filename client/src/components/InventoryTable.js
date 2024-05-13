@@ -37,6 +37,23 @@ function InventoryTable({filters, userType , limit}) {
     },
   ];
 
+
+  // change columns for hospital or donar
+  if (userType !== "organization") {
+
+    // remove inventory type column
+    columns.splice(0,1);
+
+    //change reference column to organization
+    columns[2].title = "Organization Name";
+
+    //date column should be renamed to taken date
+    columns[3].title = userType === "hospital" ? "Taken Date" : "Donated Date";
+
+  }
+
+
+
   const getData = async () => {
     try {
       dispatch(SetLoading(true));
