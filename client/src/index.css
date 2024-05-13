@@ -49,3 +49,25 @@ table {
   border: 1px solid #9f9f9f !important;
   border-radius: 2px !important;
 }
+
+/*  testing responsive design */
+/* Responsive styles */
+@media (min-width: 640px) {
+  /* Styles for screens >= 640px */
+}
+
+@media (min-width: 768px) {
+  /* Styles for screens >= 768px */
+}
+
+@media (min-width: 1024px) {
+  /* Styles for screens >= 1024px */
+}
+
+@media (min-width: 1280px) {
+  /* Styles for screens >= 1280px */
+}
+
+@media (min-width: 1536px) {
+  /* Styles for screens >= 1536px */
+}
