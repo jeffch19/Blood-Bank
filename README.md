@@ -33,10 +33,21 @@ The Blood Bank Management System is a comprehensive application designed to stre
 7. Start the backend server by running `npm run start` in the `server` directory.
 8. Start the frontend application by running `npm start` in the `client` directory.
 
-## Usage
+## Deployed Link
 
-- **Frontend:** Access the application by navigating to `http://localhost:3000` in your web browser.
-- **Backend:** The backend server runs on `http://localhost:5001`.
+[Deployed Link: https://vitalflow-bloodbank.onrender.com](https://vitalflow-bloodbank.onrender.com)
+
+## Screenshots
+
+![Login Page](./client/assets/login.jpg)
+
+![Registration Page](./client/assets/register.jpg)
+
+![Organization Dashboard](./client/assets/org.jpg)
+
+![Hospital Dashboard](./client/assets/hospital.jpg)
+
+![Donor Dashboard](./client/assets/donar.jpg)
 
 ## Contributing
 
