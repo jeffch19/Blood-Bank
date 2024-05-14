@@ -6,6 +6,7 @@ import { RegisterUser } from '../../apicalls/users';
 import { useDispatch } from 'react-redux';
 import { SetLoading } from '../../redux/loadersSlice';
 import { getAntdInputValidation } from '../../utils/helpers';
+import '../Styles/register.css'
 
 
 function Register() {
@@ -46,7 +47,7 @@ function Register() {
     <div className='flex h-screen items-center justify-center bg-primary'>
       <Form
         layout="vertical"
-        className="bg-white rounded shadow grid grid-cols-2 p-5 gap-5 w-1/2"
+        className="form-container bg-white rounded shadow grid grid-cols-2 p-5 gap-5 w-1/2"
         onFinish={onFinish}
       >
         <h1 className='col-span-2 uppercase text-2xl'>

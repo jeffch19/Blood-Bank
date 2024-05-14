@@ -2,6 +2,7 @@ import { Form, Input } from 'antd'
 import TextArea from 'antd/es/input/TextArea'
 import React from 'react'
 import { getAntdInputValidation } from '../../utils/helpers'
+import '../Styles/login.css'
 
 function OrgHospitalForm({ type }) {
   return (
