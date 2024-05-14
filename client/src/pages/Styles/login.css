@@ -1,0 +1,7 @@
+@media (max-width: 768px) {
+ .login-form {
+    padding: 20px;
+    width: 90%;
+    margin: 20px auto;
+  }
+}

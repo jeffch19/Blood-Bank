@@ -5,6 +5,7 @@ import { LoginUser } from '../../apicalls/users';
 import { useDispatch } from 'react-redux';
 import { SetLoading } from '../../redux/loadersSlice';
 import { getAntdInputValidation } from '../../utils/helpers';
+import '../Styles/login.css'
 
 
 
@@ -44,7 +45,7 @@ function Login() {
     <div className='flex h-screen items-center justify-center bg-primary'>
       <Form
         layout="vertical"
-        className="bg-white rounded shadow grid  p-5 gap-5 w-1/3"
+        className="login-form bg-white rounded shadow grid  p-5 gap-5 w-1/3"
         onFinish={onFinish}
       >
         <h1 className=' uppercase text-2xl'>
